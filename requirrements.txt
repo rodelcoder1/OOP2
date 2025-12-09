@@ -1,0 +1,20 @@
+```python
+kagglehub==0.3.13
+numpy>=1.24.0
+pandas>=2.1.0
+scipy>=1.9.0
+statsmodels>=0.14.0
+matplotlib>=3.7.0
+scikit-learn>=1.1.0
+
+# dependencies / common supporting libs
+requests>=2.31.0
+PyYAML>=6.0
+tqdm>=4.66.0
+charset-normalizer>=3.0.0
+idna>=3.4
+urllib3>=1.26.10
+certifi>=2025.6.0
+colorama>=0.4.6
+packaging>=24.0
+```
