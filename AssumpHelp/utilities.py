@@ -13,7 +13,7 @@ def prepare_vars(model, x, y):
     """
     Prepares fitted and residual values
     """ 
-    if hasattr(model, "predict"):
+    if not hasattr(model, "predict"):
         y_predictions = model.predict(x)
     else:
         raise ValueError("Model must be a fitted regression model.")
@@ -27,9 +27,13 @@ def interpret_pval(pval, assump):
     if pval > 0.05:
         return f"If alpha = 0.05 and p-value > 0.05: Assumption of {assump.capitalize()} is NOT VIOLATED.\n"
     else:
-        return f"If alpha = 0.05 and p-value > 0.05: Assumption of {assump.capitalize()} is VIOLATED.\n"
+        return f"If alpha = 0.05 and p-value < 0.05: Assumption of {assump.capitalize()} is VIOLATED.\n"
 
 def plot_assump(fitted, residuals,assumption):
+    if isinstance(assumption, list):
+        assumption = assumption[0]  # take first element if list
+
+    assumption = assumption.lower()
 
     # Linearity: Residuals vs Fitted
     if assumption.lower() == "linearity":
