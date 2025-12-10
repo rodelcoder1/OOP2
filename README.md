@@ -76,16 +76,7 @@ AIC:                            10.7319
 BIC:                             9.9465
 ============================================================
 ```
-# Concept
-```ini
-y = β₀ + β₁x₁ + ε
-```
-Where:
-y — dependent variable
-x — independent variable
-β — model coefficients
-ε — residual error
-# Summary Fields:
+# Summary:
 
 1. Linearity (Check for a straight-line relationship)
 
@@ -135,25 +126,7 @@ Visual Plot: Residuals vs Order Plot (Look for a random scatter of points over t
 ├── setup.py
 └── LICENSE
 ```
-# Core Class
-| Class      | Purpose                                  |
-| ---------- | ---------------------------------------- |
-| Hypothesis | Fit, store, and summarize a linear model |
 
-# Testing (Optional)
-If you add tests:
-```bash
-pip install pytest
-pytest -v
-```
-# Comparison with Alternatives
-| Feature             | AssumpHelp | scikit-learn | statsmodels |
-| ------------------- |  --------- | ------------ | ----------- |
-| Beginner-friendly   | ✅        |⚠️            | ❌          |
-| Statistical summary | ✅        | ❌           | ✅          |
-| One-class design    | ✅        | ❌           | ❌          |
-| Visualization       | ⚠️        | ⚠️           | ⚠️          |
-| Great for school    | ✅        | ❌           | ⚠️          |
 
 # When to Use AssumpHelp
 
@@ -163,11 +136,11 @@ Use this project if you want:
 -Easy-to-read summaries
 -Minimal code complexity
 -Perfect for school projects, assignments, and beginner ML learning
-# Contributors
+
 
 # Core Developers 
 # (Creator of the Hypothesis class and full regression notebook.)
-**[Kirstine Roise G. Moog & Rodel P. Badilla Jr.]** --> Inceptionist & Structural Design 
+**[Kirsten Roise G. Moog & Rodel P. Badilla Jr.]** --> Inceptionist & Structural Design 
 - Designed clean separation of concerns  
 - Implementing codes engine  
 - Created visualization tools
@@ -183,30 +156,19 @@ Use this project if you want:
 # Special Thanks
 - We are inspired to go beyond mere prediction; we seek the deep understanding and comprehensive diagnostics that only a robust statistical approach can  provide
   influend style by Statistical regression diagnostic assumptions. 
-- Jesus Christ Our Lord
 
----
-# License
-This project is licensed under the MIT License – see the LICENSE file for details.
----
+
+
+
 ---
 # Support
 - Email: moog.kirstenroise@gmail.com
 - Issues: GitHub Issues  
 - Discussions: GitHub Discussions  
 ---
-# Roadmap
 
 # Version 1.0 (Current)
 -Basic OLS regression
 -Statsmodels summary
 -Prediction support
-# version 1.1 (Planned)
--Residual plots
--Improved summary formatting
--Multiple linear regression
-# Version 2.0 (Future)
--Assumption checks (normality, homoscedasticity)
--Automatic visualization suite
--Train/test splitting
--Full module packaging
+
