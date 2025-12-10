@@ -1,5 +1,5 @@
 import statsmodels.api as sm
-
+from statsmodels.stats.diagnostic import linear_reset
 from .hypothesis import Hypothesis
 from .utilities import prepare_vars, interpret_pval, plot_assump, load_output
 
