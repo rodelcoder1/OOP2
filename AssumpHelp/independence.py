@@ -1,24 +1,25 @@
 import statsmodels.api as sm
-
+from statsmodels.stats.stattools import durbin_watson
 from .hypothesis import Hypothesis
 from .utilities import prepare_vars, interpret_dw, plot_assump, load_output
 
 
-class Independence:  
+class Independence(Hypothesis):  
     """
     Independence checker using:
     - Durbin-Watson statistic
     - Residuals vs Order plot
     """
     def fit(self):
-        self.fitted, self.residuals = prepare_vars(self.model, self.x, self.y)    
-    
+        self.fitted_model = sm.OLS(self.y, self.x_cons).fit()
+        self.fitted, self.residuals = prepare_vars(self.fitted_model, self.x_cons, self.y)
+        
     def test_independence(self):
         """
         Perform Durbin-Watson autocorrelation test.
         """
         self.fit()
-        dw_stat = durbin_watson(self.resid)
+        dw_stat = durbin_watson(self.residuals)
         self.result = dw_stat
         print("Durbin-Watson Test for Independence")
         print(f"DW-statistic: {dw_stat:.4f}")
