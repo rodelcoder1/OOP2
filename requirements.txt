@@ -1,4 +1,17 @@
 ```python
+#prerequites 
+import numpy as np
+import pandas as pd
+import scipy.stats as sp
+from scipy.stats import f
+import statsmodels.api as sm
+from statsmodels.stats.diagnostic import linear_reset
+from statsmodels.stats.diagnostic import het_breuschpagan
+from statsmodels.stats.stattools import durbin_watson
+import matplotlib.pyplot as plt
+import sklearn as sk
+import os
+# Library
 numpy==1.26.4
 pandas==2.2.3
 scipy==1.13.1
