@@ -10,9 +10,9 @@ setup(
         "scipy>=1.10.0",
         "statsmodels>=0.14.0",
         "scikit-learn>=1.3.0",
-        "matplotlib>=3.7.0",
+        "matplotlib>=3.7.0"
     ],         
-    author="Badilla",
+    author="Aque, Badilla, Caaminio, Moog, Prollo",
     author_email="rodelpellazar1@gmail.com",
     description="Linear Regression Assumption Interpretation Guide",
     long_description=open("README.md").read(),
