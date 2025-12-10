@@ -1,0 +1,12 @@
+# Byte-compiled / build / dist files
+__pycache__/
+*.py[cod]
+
+# Build and distribution folders
+build/
+dist/
+*.egg-info/
+
+# Editor and OS files
+*.DS_Store
+*.Rhistory
