@@ -1,5 +1,5 @@
 import statsmodels.api as sm
-from statsmodels.stats.diagnostic import linear_reset
+
 from .hypothesis import Hypothesis
 from .utilities import prepare_vars, interpret_pval, plot_assump, load_output
 
@@ -11,11 +11,12 @@ class Linearity(Hypothesis):
     - Residuals vs Fitted plot
     """
     def fit(self):
-        self.fitted_model = sm.OLS(self.y, self.x_cons).fit()
-        self.fitted, self.residuals = prepare_vars(self.fitted_model, self.x_cons, self.y)
+        self.model.fit(self.x_cons, self.y)
+        self.fitted, self.residuals = prepare_vars(self.model, self.x_cons, self.y)
+        return self
         
    
-    def test_linearity(self):
+    def test(self):
         """
         Perform Ramsey RESET test for linearity.
         """
@@ -29,13 +30,12 @@ class Linearity(Hypothesis):
         interpretation = interpret_pval(result_pval, "linearity")
         print("\n" + interpretation)
   
-    def plot_linearity(self):
+    def plot(self):
         
         """
         Plot linearity diagnostics.
         """
-        
-        plot_assump(self.fitted, self.residuals,"linearity")
+        figure, axes = plot_assump(self.fitted, self.residuals,"linearity")
         print("Interpretation Guide:\n")
         print(load_output("linplot_interpretation_guide.txt"))
-   
+        return figure, axes
