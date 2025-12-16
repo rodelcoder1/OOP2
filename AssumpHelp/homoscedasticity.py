@@ -10,10 +10,11 @@ class Homoscedasticity(Hypothesis):
     - Scale-Location plot
     """
     def fit(self):
-        self.fitted_model = sm.OLS(self.y, self.x_cons).fit()
-        self.fitted, self.residuals = prepare_vars(self.fitted_model, self.x_cons, self.y)
+        self.model.fit(self.x_cons, self.y)
+        self.fitted, self.residuals = prepare_vars(self.model, self.x_cons, self.y)
+        return self
    
-    def test_homoscedasticity(self):
+    def test(self):
         """
         Perform Breusch-Pagan test.
         """
@@ -27,10 +28,11 @@ class Homoscedasticity(Hypothesis):
         interpretation = interpret_pval(bp_pval, "homoscedasticity")
         print("\n" + interpretation)
 
-    def plot_homoscedasticity(self):
+    def plot(self):
         """
         Plot homoscedasticity diagnostics.
         """
-        plot_assump(self.fitted, self.residuals, "homoscedasticity")
+        figure, axes = plot_assump(self.fitted, self.residuals, "homoscedasticity")
         print("Interpretation Guide:\n")
         print(load_output("homplot_interpretation_guide.txt"))
+        return figure, axes
