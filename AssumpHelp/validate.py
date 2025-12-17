@@ -1,7 +1,7 @@
 from sklearn.base import BaseEstimator
 from sklearn.utils.validation import check_is_fitted
 import numpy as np
-from exceptions import InvalidModelError, NotFittedError, InvalidArrayError
+from .exceptions import InvalidModelError, NotFittedError, InvalidArrayError
 
 def validate_sklearn_regressor(model):
     if not isinstance(model, BaseEstimator):
