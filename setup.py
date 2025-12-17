@@ -8,8 +8,8 @@ long_description = readme_path.read_text(encoding="utf-8")  # <-- UTF-8 here
 
 setup(
     name="assumphelp",
-    version="0.1.5",
-    packages=find_packages(),
+    version="0.1.6",
+    packages=["assumphelp"],
     install_requires=[
         "numpy>=1.24.0",
         "pandas>=2.0.0",
