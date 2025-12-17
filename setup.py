@@ -7,7 +7,7 @@ readme_path = this_directory / "README.md"
 long_description = readme_path.read_text(encoding="utf-8")  # <-- UTF-8 here
 
 setup(
-    name="assumphelp",
+    name="assumphelp_v2",
     version="0.1.0",
     packages=["assumphelp"],
     install_requires=[
