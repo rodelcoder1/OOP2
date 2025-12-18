@@ -19,6 +19,7 @@ class Homoscedasticity(Hypothesis):
         Perform Breusch-Pagan test.
         """
         self.fit()
+        validate_residual_variance(self.residuals)
         bp_test = het_breuschpagan(self.residuals, self.x_cons)
         bp_stat, bp_pval, _, _ = bp_test
         self.result = bp_pval
