@@ -29,6 +29,7 @@ __all__ = [
     "check_array",
     "check_resid_var",
     "check_shapiro_resids",
+    "check_dw_resids",
     "Hypothesis",
     "Linearity",
     "Homoscedasticity",
