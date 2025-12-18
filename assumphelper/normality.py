@@ -20,7 +20,7 @@ class Normality(Hypothesis):
         """
         Perform Shapiro-Wilk test.
         """
-         if not getattr(self, "fit_done", False):
+        if not getattr(self, "fit_done", False):
             raise NotFittedError("Call fit() before test().")
 
         check_shapiro_resids(self.residuals)
