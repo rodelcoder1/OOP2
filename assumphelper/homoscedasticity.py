@@ -20,7 +20,7 @@ class Homoscedasticity(Hypothesis):
         """
         Perform Breusch-Pagan test.
         """
-         if not getattr(self, "fit_done", False):
+        if not getattr(self, "fit_done", False):
             raise NotFittedError("Call fit() before test().")
              
         validate_residual_variance(self.residuals)
