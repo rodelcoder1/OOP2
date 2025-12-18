@@ -12,13 +12,16 @@ class Homoscedasticity(Hypothesis):
     def fit(self):
         self.model.fit(self.x_cons, self.y)
         self.fitted, self.residuals = prepare_vars(self.model, self.x_cons, self.y)
+        self.fit_done = True
         return self
    
     def test(self):
         """
         Perform Breusch-Pagan test.
         """
-        self.fit()
+         if not getattr(self, "fit_done", False):
+            raise NotFittedError("Call fit() before test().")
+             
         validate_residual_variance(self.residuals)
         bp_test = het_breuschpagan(self.residuals, self.x_cons)
         bp_stat, bp_pval, _, _ = bp_test
