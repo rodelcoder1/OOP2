@@ -9,7 +9,7 @@ from sklearn.base import BaseEstimator, RegressorMixin
 import matplotlib.pyplot as plt
 import sklearn as sk
 import os
-from .validate import 
+from .validate import validate_sklearn_regressor, validate_array
 
 def prepare_vars(model: BaseEstimator, x:np.ndarray , y: np.ndarray):
     """
