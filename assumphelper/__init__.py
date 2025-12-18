@@ -16,16 +16,18 @@ from .utilities import (
     load_output
 )
 
-from .exceptions import InvalidModelError, NotFittedError, InvalidArrayError
-from .validate import validate_sklearn_regressor, validate_array
+from .exceptions import InvalidModelError, NotFittedError, InvalidArrayError, UndefinedTestError
+from .validate import validate_sklearn_regressor, validate_array, validate_residual_variance
 
 
 __all__ = [
     "InvalidModelError",
     "NotFittedError",
     "InvalidArrayError",
+    "UndefinedTestError",
     "validate_sklearn_regressor",
     "validate_array",
+    "validate_residual_variance",
     "Hypothesis",
     "Linearity",
     "Homoscedasticity",
