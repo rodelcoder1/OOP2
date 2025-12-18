@@ -13,13 +13,16 @@ class Independence(Hypothesis):
     def fit(self):
         self.model.fit(self.x_cons, self.y)
         self.fitted, self.residuals = prepare_vars(self.model, self.x_cons, self.y)
+        self.fit_done = True
         return self
         
     def test(self):
         """
         Perform Durbin-Watson autocorrelation test.
         """
-        self.fit()
+         if not getattr(self, "fit_done", False):
+            raise NotFittedError("Call fit() before test().")
+             
         dw_stat = durbin_watson(self.residuals)
         self.result = dw_stat
         print("Durbin-Watson Test for Independence")
