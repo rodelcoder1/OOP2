@@ -38,19 +38,26 @@ Linear regression relies on several statistical assumptions (linearity, normalit
 ## 📂 Project Structure
 
 ```
-AssumpHelper/
-├── assumphelper/          # Core library modules
-│   ├── __init__.py
-│   ├── linear_model.py
-│   ├── assumption_tests.py
-│   ├── diagnostics.py
-│   └── visualizations.py
-├── examples/              # Usage examples and demos
-├── tests/                 # Unit tests
-├── DOCS/                  # Documentation files
-├── requirements.txt       # Dependencies
-├── setup.py               # Package setup
-└── README.md & License            # Project documentation
+assumphelper/
+├── __init__.py                         # Package initializer and public API
+├── check.py                            # Central controller to run assumption checks
+├── exceptions.py                       # Custom exceptions and error handling
+├── utilities.py                        # Shared helper functions
+│
+├── normality.py                        # Normality tests and plots
+├── normplot_interpretation_guide.txt
+│
+├── homoscedasticity.py                 # Homoscedasticity tests and plots
+├── homplot_interpretation_guide.txt
+│
+├── linearity.py                        # Linearity diagnostics and plots
+├── linplot_interpretation_guide.txt
+│
+├── independence.py                     # Independence (Durbin–Watson) diagnostics
+├── indepplot_interpretation_guide.txt
+│
+├── hypothesis.py                       # Hypothesis testing utilities
+└── test/ # Test scripts and validation files
 ```
 
 ---
@@ -70,34 +77,55 @@ pip install assumphelper
 ```python
 import pandas as pd
 import statsmodels.api as sm
-import assumphelper as ah
+import AssumpHelper as ah
 
+# Sample dataset
 df = pd.DataFrame({
     "y": [10, 12, 13, 15, 16, 18],
     "x1": [1, 2, 3, 4, 5, 6]
 })
 
+# Define variables
 X = sm.add_constant(df["x1"])
 y = df["y"]
+
+# Fit linear regression model
 model = sm.OLS(y, X).fit()
 
+# Prepare fitted values and residuals
 fitted, residuals = AssumpHelp.prepare_vars(model, X, y)
 
-# Independence of errors
-print(AssumpHelp.interpret_dw(model.durbin_watson))
-
-# Normality of residuals
-AssumpHelp.plot_assump(fitted, residuals, "normality")
-
-# Homoscedasticity
-AssumpHelp.plot_assump(fitted, residuals, "homoscedasticity")
-
-# Linearity
+# Check LINEARITY assumption
 AssumpHelp.plot_assump(fitted, residuals, "linearity")
 
-```
 
-The output includes statistical test results, interpretations, and diagnostic plots.
+
+```
+<img width="578" height="455" alt="image" src="https://github.com/user-attachments/assets/718688f0-4694-44e0-95d0-b04e8131a09d" />
+
+Intercept (β₀) ≈ 8.60
+Slope (β₁) ≈ 1.54
+## Interpretations
+For every one-unit increase in x₁, the dependent variable y increases by approximately 1.54 units, indicating a positive linear relationship.
+
+## 📈 Linearity Plot (Residuals vs Fitted Values)
+What the Plot Shows
+
+X-axis: Fitted (predicted) values
+
+Y-axis: Residuals (errors)
+
+Horizontal line at 0
+
+You can see that:
+
+Residuals are scattered randomly around zero
+
+There is no curved or systematic pattern
+
+Points do not form a U-shape or trend
+
+The output composed statistical test results, interpretations, and diagnostic plots.
 
 ---
 
