@@ -69,24 +69,32 @@ pip install assumphelper
 ## 🚀 Basic Usage
 
 ```python
-from assumphelper.linear_model import LinearModel
+import pandas as pd
+import statsmodels.api as sm
+import AssumpHelp
 
-# X = independent variables
-# y = dependent variable
-model = LinearModel(X, y)
+df = pd.DataFrame({
+    "y": [10, 12, 13, 15, 16, 18],
+    "x1": [1, 2, 3, 4, 5, 6]
+})
 
-# Fit linear regression model
-model.fit()
+X = sm.add_constant(df["x1"])
+y = df["y"]
+model = sm.OLS(y, X).fit()
 
-# Automatically checks:
-# - Linearity
-# - Normality of residuals
-# - Homoscedasticity
-# - Independence of errors
-model.check_assumptions()
+fitted, residuals = AssumpHelp.prepare_vars(model, X, y)
 
-# Displays statistical tests, p-values, interpretations, and plots
-model.summary()
+# Independence of errors
+print(AssumpHelp.interpret_dw(model.durbin_watson))
+
+# Normality of residuals
+AssumpHelp.plot_assump(fitted, residuals, "normality")
+
+# Homoscedasticity
+AssumpHelp.plot_assump(fitted, residuals, "homoscedasticity")
+
+# Linearity
+AssumpHelp.plot_assump(fitted, residuals, "linearity")
 
 ```
 
