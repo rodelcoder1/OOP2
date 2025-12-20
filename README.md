@@ -77,7 +77,7 @@ pip install assumphelper
 ```python
 # code here
 ```
-<img width="578" height="455" alt="image" src="https://github.com/user-attachments/assets/718688f0-4694-44e0-95d0-b04e8131a09d" />
+<img width="578" height="455" alt="image" src="https://github.com/user-attachments/assets/718688f0-4694-44e0-95d0-b04e8131a09d" /
 
 ---
 
