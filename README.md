@@ -37,26 +37,36 @@ Linear regression relies on several statistical assumptions (linearity, normalit
 ## 📂 Project Structure
 
 ```
-assumphelper/
-├── __init__.py                         # Package initializer and public API
-├── check.py                            # Central controller to run assumption checks
-├── exceptions.py                       # Custom exceptions and error handling
-├── utilities.py                        # Shared helper functions
+AssumpHelper/
 │
-├── normality.py                        # Normality tests and plots
-├── normplot_interpretation_guide.txt
+├── assumphelper/
+│   ├── __init__.py
+│   ├── check.py
+│   ├── exceptions.py
+│   ├── hypothesis.py
+│   ├── utilities.py
+│   │
+│   ├── linearity.py
+│   ├── normality.py
+│   ├── homoscedasticity.py
+│   ├── independence.py
+│   │
+│   ├── linplot_interpretation_guide.txt
+│   ├── normplot_interpretation_guide.txt
+│   ├── homplot_interpretation_guide.txt
+│   └── indepplot_interpretation_guide.txt
 │
-├── homoscedasticity.py                 # Homoscedasticity tests and plots
-├── homplot_interpretation_guide.txt
+├── DOCS/
+│   ├── examples/
+│   │   └── examples.ipynb
+│   │
+│   └── tests/
+│       └── test_assumphelper_assert_errors.ipynb
 │
-├── linearity.py                        # Linearity diagnostics and plots
-├── linplot_interpretation_guide.txt
-│
-├── independence.py                     # Independence (Durbin–Watson) diagnostics
-├── indepplot_interpretation_guide.txt
-│
-├── hypothesis.py                       # Hypothesis testing utilities
-└── test/ # Test scripts and validation files
+├── README.md
+├── requirements.txt
+├── setup.py
+└── .gitignore
 ```
 
 ---
